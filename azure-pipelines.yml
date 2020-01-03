@@ -58,7 +58,7 @@ steps:
     includeNuGetOrg: true
     packagesToPush: $(Build.ArtifactStagingDirectory)/*.nupkg
     #packagesToPush: 'D:/a/1/s/src/bin/**/*.zip;!D:/a/1/s/src/bin/**/*.symbols.zip'
-    versioningScheme: byPrereleaseNumber
+    versioningScheme: off
     vstsFeed: aishwaryasohani
     publishVstsFeed: aishwaryasohani
     majorVersion: '$(Major)'
