@@ -24,6 +24,7 @@ steps:
   displayName: 'Dotnet restore'
   inputs:
     command: 'restore'
+    projects: '$(solution)'
 
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'
