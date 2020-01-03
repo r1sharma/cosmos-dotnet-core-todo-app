@@ -35,14 +35,13 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'pack'
+    command: 'publish'
     packagesToPack: '$(solution)'
     versioningScheme: byPrereleaseNumber
+    zipAfterPublish: true
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'   
-
-
+    patchVersion: '$(Patch)'
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'
   inputs:
@@ -61,7 +60,7 @@ steps:
     command: 'push'
     feedsToUse: 'select'
     includeNuGetOrg: true
-    packagesToPush: $(Build.ArtifactStagingDirectory)/*.nupkg
+    packagesToPush: $(Build.ArtifactStagingDirectory)/*.zip
     #packagesToPush: 'D:/a/1/s/src/bin/**/*.zip;!D:/a/1/s/src/bin/**/*.symbols.zip'
     vstsFeed: aishwaryasohani
     publishVstsFeed: aishwaryasohani 
