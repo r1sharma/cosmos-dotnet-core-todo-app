@@ -39,20 +39,13 @@ steps:
       nuGetServiceConnections: 'nuget-connection'
 
 - task: DotNetCoreCLI@2
+  displayName: 'Dotnet publish'
   inputs:
     command: 'publish'
     publishWebProjects: true
     arguments: '-o $(Build.ArtifactStagingDirectory)/'
-    feedsToUse: 'select'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.zip;!$(Build.ArtifactStagingDirectory)/**/*.symbols.zip'
-    versioningScheme: byPrereleaseNumber
-    vstsFeed: aishwaryasohani
-    publishVstsFeed: aishwaryasohani
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'
-
 - task: DotNetCoreCLI@2
+  displayName: 'Dotnet Push'
   inputs:
     command: 'push'
     feedsToUse: 'select'
