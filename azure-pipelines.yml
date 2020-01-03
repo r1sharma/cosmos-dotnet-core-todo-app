@@ -21,6 +21,7 @@ steps:
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
+  displayName: 'Nuget restore'
   inputs:
     restoreSolution: '$(solution)'
 
@@ -44,7 +45,12 @@ steps:
     command: 'publish'
     publishWebProjects: true
     arguments: '-o $(Build.ArtifactStagingDirectory)/'
-    script: 'ls -l'
+
+- task: Bash@3
+  displayName: 'Shell Script output'
+  inputs:
+    script: 'ls -l $(Build.ArtifactStagingDirectory)/'
+
 - task: DotNetCoreCLI@2
   displayName: 'Dotnet Push'
   inputs:
