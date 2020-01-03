@@ -60,7 +60,7 @@ steps:
     command: 'push'
     feedsToUse: 'select'
     includeNuGetOrg: true
-    packagesToPush: $(Build.ArtifactStagingDirectory)/*.zip
+    packagesToPush: 'D:/a/1/s/src/bin/**/*.zip'
     #packagesToPush: 'D:/a/1/s/src/bin/**/*.zip;!D:/a/1/s/src/bin/**/*.symbols.zip'
     vstsFeed: aishwaryasohani
     publishVstsFeed: aishwaryasohani 
