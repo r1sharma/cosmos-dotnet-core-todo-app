@@ -52,6 +52,18 @@ steps:
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'push'
+    feedsToUse: 'select'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.zip;!$(Build.ArtifactStagingDirectory)/**/*.symbols.zip'
+    versioningScheme: byPrereleaseNumber
+    vstsFeed: aishwaryasohani
+    publishVstsFeed: aishwaryasohani
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'    
+
 # - task: NuGetCommand@2
 #   displayName: 'NuGet push'
 #   inputs:
