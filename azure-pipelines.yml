@@ -46,6 +46,7 @@ steps:
     includeNuGetOrg: true
     packagesToPush: 'D:/a/1/s/src/bin/**/*.zip;!D:/a/1/s/src/bin/**/*.symbols.zip'
     versioningScheme: byPrereleaseNumber
+    nugetConfigPath: 'd:\a\1\Nuget\tempNuGet_95.config'
     vstsFeed: aishwaryasohani
     publishVstsFeed: aishwaryasohani
     majorVersion: '$(Major)'
