@@ -13,7 +13,7 @@ variables:
   solution: '**/*.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  Major: '1'
+  Major: '2'
   Minor: '0'
   Patch: '1'
 
@@ -65,6 +65,7 @@ steps:
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'    
+    
 
 # - task: NuGetCommand@2
 #   displayName: 'NuGet push'
