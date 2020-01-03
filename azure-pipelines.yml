@@ -36,6 +36,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
+    arguments: '-o $(Build.ArtifactStagingDirectory)\artifact.zip'
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'
   inputs:
