@@ -37,6 +37,11 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '$(solution)'
+    versioningScheme: byPrereleaseNumber
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'   
+
 
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'
@@ -58,12 +63,8 @@ steps:
     includeNuGetOrg: true
     packagesToPush: $(Build.ArtifactStagingDirectory)/*.nupkg
     #packagesToPush: 'D:/a/1/s/src/bin/**/*.zip;!D:/a/1/s/src/bin/**/*.symbols.zip'
-    versioningScheme: off
     vstsFeed: aishwaryasohani
-    publishVstsFeed: aishwaryasohani
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'    
+    publishVstsFeed: aishwaryasohani 
     
 
 # - task: NuGetCommand@2
