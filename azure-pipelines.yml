@@ -44,18 +44,18 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-    arguments: '-o $(Build.ArtifactStagingDirectory)/'
-
-- task: Bash@3
-  displayName: 'Shell Script output'
-  inputs:
-    script: 'ls -l $(Build.ArtifactStagingDirectory)/'
+    zipAfterPublish: true
+# - task: Bash@3
+#   displayName: 'Shell Script output'
+#   inputs:
+#     script: 'ls -l $(Build.ArtifactStagingDirectory)'
 
 - task: DotNetCoreCLI@2
   displayName: 'Dotnet Push'
   inputs:
     command: 'push'
     feedsToUse: 'select'
+    includeNuGetOrg: true
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.zip;!$(Build.ArtifactStagingDirectory)/**/*.symbols.zip'
     versioningScheme: byPrereleaseNumber
     vstsFeed: aishwaryasohani
