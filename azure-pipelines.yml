@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
+  solution: '**/*.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   Major: '1'
@@ -25,18 +25,30 @@ steps:
   inputs:
     command: 'restore'
     projects: '$(solution)'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration debug'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '$(solution)'
 
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'
   inputs:
       nuGetServiceConnections: 'nuget-connection'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Dotnet publish'
-  inputs:
-    command: 'publish'
-    publishWebProjects: true
-    zipAfterPublish: true
+# - task: DotNetCoreCLI@2
+#   displayName: 'Dotnet publish'
+#   inputs:
+#     command: 'publish'
+#     publishWebProjects: true
+#     zipAfterPublish: true
 
 - task: DotNetCoreCLI@2
   displayName: 'Dotnet Push'
@@ -44,7 +56,8 @@ steps:
     command: 'push'
     feedsToUse: 'select'
     includeNuGetOrg: true
-    packagesToPush: 'D:/a/1/s/src/bin/**/*.zip;!D:/a/1/s/src/bin/**/*.symbols.zip'
+    packagesToPush: $(Build.ArtifactStagingDirectory)/*.nupkg
+    #packagesToPush: 'D:/a/1/s/src/bin/**/*.zip;!D:/a/1/s/src/bin/**/*.symbols.zip'
     versioningScheme: byPrereleaseNumber
     nugetConfigPath: 'd:\a\1\Nuget\tempNuGet_95.config'
     vstsFeed: aishwaryasohani
