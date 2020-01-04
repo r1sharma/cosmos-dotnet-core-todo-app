@@ -42,10 +42,10 @@ steps:
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
-- task: NuGetAuthenticate@0
-  displayName: 'NuGet Authenticate'
-  inputs:
-      nuGetServiceConnections: 'nuget-connection'
+# - task: NuGetAuthenticate@0
+#   displayName: 'NuGet Authenticate'
+#   inputs:
+#       nuGetServiceConnections: 'nuget-connection'
 
 # - task: DotNetCoreCLI@2
 #   displayName: 'Dotnet publish'
