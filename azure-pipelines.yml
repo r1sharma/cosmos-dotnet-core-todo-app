@@ -13,9 +13,9 @@ variables:
   solution: '**/*.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  Major: '1'
-  Minor: '0'
-  Patch: '1'
+  Parameters.requestedMajorVersion: '1'
+  Parameters.requestedMinorVersion: '0'
+  Parameters.requestedPatchVersion: '6'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -41,9 +41,10 @@ steps:
     packagesToPack: '$(solution)'
     versioningScheme: byPrereleaseNumber
     zipAfterPublish: true
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'
+    majorVersion: '$(Parameters.requestedMajorVersion)'
+    minorVersion: '$(Parameters.requestedMinorVersion)'
+    patchVersion: '$(Parameters.requestedPatchVersion)'
+    buildProperties: 'id=$(Build.Variable)'
 # - task: NuGetAuthenticate@0
 #   displayName: 'NuGet Authenticate'
 #   inputs:
