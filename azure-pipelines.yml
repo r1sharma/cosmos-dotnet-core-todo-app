@@ -13,7 +13,7 @@ variables:
   solution: '**/*.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  Major: '2'
+  Major: '1'
   Minor: '0'
   Patch: '1'
 
