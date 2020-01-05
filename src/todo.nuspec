@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$majorVersion$.$minorVersion$.$patchVersion$</version>
+    <version>1.0.1</version>
     <title>todoapp</title>
     <authors>dummy</authors>
     <owners>dummy</owners>
