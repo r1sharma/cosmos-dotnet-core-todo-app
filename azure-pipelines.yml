@@ -28,12 +28,14 @@ steps:
     feedsToUse: 'select'
 
 - task: DotNetCoreCLI@2
+  displayName: 'Dotnet Build'
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration debug'
 
 - task: DotNetCoreCLI@2
+  displayName: 'Dotnet publish'
   inputs:
     command: 'publish'
     packagesToPack: '$(solution)'
@@ -64,6 +66,10 @@ steps:
     #packagesToPush: 'D:/a/1/s/src/bin/**/*.zip;!D:/a/1/s/src/bin/**/*.symbols.zip'
     vstsFeed: aishwaryasohani
     publishVstsFeed: aishwaryasohani 
+    versioningScheme: byPrereleaseNumber
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'
     
 
 # - task: NuGetCommand@2
