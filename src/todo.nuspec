@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>todoapp</id>
     <version>1.0.1</version>
     <title>todoapp</title>
     <authors>dummy</authors>
