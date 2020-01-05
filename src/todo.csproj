@@ -1,16 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <IsPackable>true</IsPackable>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App">
-      <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
-      <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.1.0" />
-  </ItemGroup>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+   <PropertyGroup>
+      <TargetFramework>netcoreapp2.1</TargetFramework>
+      <IsPackable>true</IsPackable>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+   </PropertyGroup>
+   <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.App">
+         <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
+         <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.1.0" />
+   </ItemGroup>
+   <ItemGroup>
+      <Content Include="todo.nuspec">
+         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+   </ItemGroup>
 </Project>
